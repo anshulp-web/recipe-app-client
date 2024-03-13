@@ -20,10 +20,13 @@ const Login = () => {
   const onSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3001/auth/login', {
-        username,
-        password,
-      });
+      const response = await axios.post(
+        'https://cautious-lingerie-tick.cyclic.app/auth/login',
+        {
+          username,
+          password,
+        }
+      );
       if (response.data.message == 'LoggedIn') {
         setCookies('access_token', response.data.token);
         window.localStorage.setItem('userId', response.data.userId);
@@ -52,10 +55,13 @@ const Register = () => {
   const onSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.post('http://localhost:3001/auth/register', {
-        username,
-        password,
-      });
+      await axios.post(
+        'https://cautious-lingerie-tick.cyclic.app/auth/register',
+        {
+          username,
+          password,
+        }
+      );
       alert('Registration Successfully !');
     } catch (error) {
       console.error(error);
